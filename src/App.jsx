@@ -39,6 +39,17 @@ function App() {
             </button>
           </div>
         </div>
+        <div className="bg-gray-100">
+          <div class="w-[85%] mx-auto mt-10">
+            <h2 class="text-2xl font-bold text-center mb-6 pt-3">
+              All Recipes
+            </h2>
+            <div
+              id="mealContainer"
+              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+            ></div>
+          </div>
+        </div>
       </div>
     </>
   );
