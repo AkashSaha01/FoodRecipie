@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  >
-
   <!-- Font Awesome -->
   <link
     rel="stylesheet"
@@ -57,8 +55,7 @@
           <button
             class="bg-yellow-500 px-4 py-3 rounded-md flex items-center justify-center"
           >
-            <!-- Use an icon here or just text -->
-            🔍
+            <img src="./public/nwsearch.png" class="h-8 w-autp" />
           </button>
         </div>
       </div>
@@ -66,14 +63,31 @@
       <div class="bg-gray-100">
         <div class="w-[85%] mx-auto mt-10">
           <h2 class="text-2xl font-bold text-center mb-6 pt-3">All Recipes</h2>
+          <div id="grid-loader" class="flex items-center justify-center py-10">
+            <div
+              class="w-16 h-16 border-4 border-gray-200 border-t-yellow-400 rounded-full animate-spin"
+            ></div>
+          </div>
+
+          <!-- The grid itself is hidden until loader completes -->
           <div
             id="mealContainer"
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+            class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
           ></div>
         </div>
       </div>
     </div>
 
-    <script type="module" src="/src/Script.jsx"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // after 3 seconds, hide loader and show grid
+        setTimeout(() => {
+          document.getElementById("grid-loader").style.display = "none";
+          document.getElementById("mealContainer").classList.remove("hidden");
+          // now that the grid is visible, you can fetch & render your cards:
+          import("/src/Script.jsx");
+        }, 3000);
+      });
+    </script>
   </body>
 </html>
