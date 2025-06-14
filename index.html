@@ -1,13 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Food Recipie</title>
-  </head>
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-6Y7Bp9Hc+g3rJk0c5jR4p3bK7w1ulPK+zQOq0qPbza1XGeGx1rK8OcHpn+1y/7U2OGgF1VZGFv9xnQW4EiC5UQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <div>
+      <div class="w-full py-2 mx-auto">
+        <img src="/logo.png" class="mx-auto w-[150px] h-auto py-2" />
+      </div>
+
+      <div>
+        <div
+          class="relative h-64"
+          style="
+            background-image: url('/page-title.jpg');
+            background-size: cover;
+          "
+        >
+          <div
+            class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-white text-center px-4"
+          >
+            <h1 class="text-2xl md:text-4xl font-bold">
+              Search Your
+              <br />
+              Favorite Recipe
+            </h1>
+            <p class="mt-2 text-sm md:text-lg">
+              A handful of simple ingredients typify the fresh, vibrant flavors
+              of Greek cooking
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-[75%] mx-auto flex justify-center mt-6">
+        <div class="flex items-center max-w-xl w-full gap-1">
+          <div
+            class="flex-grow border border-gray-300 rounded-md overflow-hidden"
+          >
+            <input
+              type="text"
+              placeholder="Search..."
+              class="w-full px-4 py-3 text-gray-700 focus:outline-none"
+            />
+          </div>
+          <button
+            class="bg-yellow-500 px-4 py-3 rounded-md flex items-center justify-center"
+          >
+            <!-- Use an icon here or just text -->
+            🔍
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-gray-100">
+        <div class="w-[85%] mx-auto mt-10">
+          <h2 class="text-2xl font-bold text-center mb-6 pt-3">All Recipes</h2>
+          <div
+            id="mealContainer"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/Script.jsx"></script>
   </body>
 </html>
