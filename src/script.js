@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
           '<p class="text-red-500 col-span-full text-center">Failed to load meals.</p>';
       });
   }
-  // Modal Elements
+
   const modal = document.getElementById("mealModal");
   const closeModal = document.getElementById("closeModal");
   const modalImg = document.getElementById("modalImg");
@@ -83,12 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalCategory = document.getElementById("modalCategory");
   const modalInstructions = document.getElementById("modalInstructions");
 
-  // Close Modal on X click
   closeModal.addEventListener("click", () => {
     modal.classList.add("hidden");
   });
 
-  // Close Modal on outside click
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
       modal.classList.add("hidden");
