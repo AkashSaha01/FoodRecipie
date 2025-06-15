@@ -4,12 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("mealContainer");
   const loader = document.getElementById("grid-loader");
   const searchInput = document.querySelector("input[type='text']");
-  const searchButton = document.querySelector("button");
+  const searchButton = document.getElementById("SearchButton");
 
-  // Load all meals initially
   fetchMeals("");
 
-  // On search button click
   searchButton.addEventListener("click", () => {
     const query = searchInput.value.trim();
     if (query !== "") {
@@ -17,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Search with Enter key
   searchInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       searchButton.click();
@@ -53,11 +50,21 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="p-4">
               <h3 class="text-lg font-bold mb-1">${meal.strMeal}</h3>
               <p class="text-sm text-gray-600 mb-2">${meal.strCategory} | ${meal.strArea}</p>
-              <button class="bg-yellow-600 py-1 px-2 rounded text-white">View Details</button>
+             <button class="view-details bg-yellow-600 py-1 px-2 rounded text-white">View Details</button>
+
             </div>
           `;
 
           container.appendChild(card);
+          const button = card.querySelector(".view-details");
+          button.addEventListener("click", () => {
+            modalImg.src = meal.strMealThumb;
+            modalTitle.textContent = meal.strMeal;
+            modalCategory.textContent = `${meal.strCategory} | ${meal.strArea}`;
+            modalInstructions.textContent =
+              meal.strInstructions || "No instructions available.";
+            modal.classList.remove("hidden");
+          });
         });
       })
       .catch((err) => {
@@ -68,4 +75,23 @@ document.addEventListener("DOMContentLoaded", () => {
           '<p class="text-red-500 col-span-full text-center">Failed to load meals.</p>';
       });
   }
+  // Modal Elements
+  const modal = document.getElementById("mealModal");
+  const closeModal = document.getElementById("closeModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalCategory = document.getElementById("modalCategory");
+  const modalInstructions = document.getElementById("modalInstructions");
+
+  // Close Modal on X click
+  closeModal.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  // Close Modal on outside click
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
 });
